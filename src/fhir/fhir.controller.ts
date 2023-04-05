@@ -10,10 +10,9 @@ export class FhirController {
     return this.fhirService.getHello();
   }
 
-  @Get('/auth')
+  @Get('/launch')
   async initiateAuthFlow(@Res() res) {
     const redirectUrl = await this.fhirService.getAuthRedirectUrl();
     res.redirect(redirectUrl);
-    // return this.fhirService.getAuthRedirectUrl();
   }
 }

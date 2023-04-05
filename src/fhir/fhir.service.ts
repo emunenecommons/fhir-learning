@@ -17,10 +17,9 @@ export class FhirService implements OnModuleInit {
   private FHIR_SMART_SERVER = this.configService.get<string>('FHIR_IP_ADDRESS');
   private authUrlEndpoint = '';
   private tokenUrlEndpoint = '';
-  private host = this.configService.get<string>('HOST_IP_ADDRESS');
 
   //#region getters
-  getAuthUrlEndpoint(): string {
+  public getAuthUrlEndpoint(): string {
     return this.authUrlEndpoint;
   }
   getTokenUrlEndpoint(): string {
@@ -49,6 +48,4 @@ export class FhirService implements OnModuleInit {
 
     return authToken;
   }
-
-  // Connect to the FHIR server and get the metadata details
 }

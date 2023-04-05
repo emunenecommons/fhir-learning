@@ -12,6 +12,7 @@ export default class FHIRAuthToken {
     authServerAddress: string,
     fhirServerAddress,
   ): Promise<string> {
+    // Sample
     // https://ehr/authorize?
     //         response_type=code&
     //         client_id=app-client-id&
@@ -39,7 +40,6 @@ export default class FHIRAuthToken {
       `&client_id=fhir_demo_id` +
       `&redirect_uri=${encodeURIComponent(this.hostIPAddress)}` +
       `&scope=${encodeURIComponent(scopesParameterString)}` +
-      // `&scope=launch+patient%2FObservation.rs+patient%2FPatient.rs+openid+fhirUser` +
       `&state=local_state` +
       `&aud=${fhirServerAddress}`;
 
