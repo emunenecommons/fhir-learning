@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { FhirService } from './fhir.service';
 
 @Controller('fhir')
@@ -10,8 +10,10 @@ export class FhirController {
     return this.fhirService.getHello();
   }
 
-  @Get('/connect')
-  getMetadata() {
-    return this.fhirService.getAuthMetadata();
+  @Get('/auth')
+  async initiateAuthFlow(@Res() res) {
+    const redirectUrl = await this.fhirService.getAuthRedirectUrl();
+    res.redirect(redirectUrl);
+    // return this.fhirService.getAuthRedirectUrl();
   }
 }
