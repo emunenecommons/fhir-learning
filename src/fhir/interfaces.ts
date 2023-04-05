@@ -10,3 +10,14 @@ export interface IWellKnownConfigurationResponse {
   response_types_supported: string[];
   capabilities: string[];
 }
+
+export interface IAccessTokenResponseData {
+  accessToken: string;
+  expiresIn: number;
+  idToken: string;
+  needPatientBanner: boolean;
+  patient: string;
+  scope: string;
+  smartStyleUrl: string;
+  tokenType: string;
+}

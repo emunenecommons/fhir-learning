@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 @Injectable()
-export default class FHIRAuthToken {
+export default class FHIRAuthCode {
   constructor(private configService: ConfigService) {}
 
   //#region global variables
@@ -38,7 +38,9 @@ export default class FHIRAuthToken {
       `${authServerAddress}` +
       `?response_type=code` +
       `&client_id=fhir_demo_id` +
-      `&redirect_uri=${encodeURIComponent(this.hostIPAddress)}` +
+      `&redirect_uri=${encodeURIComponent(
+        this.hostIPAddress,
+      )}/fhir/auth-granted` +
       `&scope=${encodeURIComponent(scopesParameterString)}` +
       `&state=local_state` +
       `&aud=${fhirServerAddress}`;
